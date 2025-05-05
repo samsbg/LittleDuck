@@ -1,0 +1,893 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    CA_STRING
+    DEL_BRAABI
+    DEL_BRACER
+    DEL_COMA
+    DEL_CORABI
+    DEL_CORCER
+    DEL_DOSPU
+    NEWLINE
+    PR_CONST
+    PR_DO
+    PR_ELSE
+    PR_END
+    PR_FALSE
+    PR_FOR
+    PR_IF
+    PR_INT
+    PR_MAIN
+    PR_PRINT
+    PR_PROGRAM
+    PR_STRING
+    PR_THEN
+    PR_TRUE
+    PR_VAR
+    PR_WHILE
+
+Grammar
+
+Rule 0     S' -> statement
+Rule 1     statement -> statement statement
+Rule 2     statement -> asigna
+Rule 3     asigna -> IDENTIFICADOR OA_IGUAL expresion DEL_PUYCO
+Rule 4     expresion -> exp DEL_FLEIZQ exp
+Rule 5     expresion -> exp DEL_FLEDER exp
+Rule 6     expresion -> exp OL_NOIGU exp
+Rule 7     expresion -> exp OL_IGUIGU exp
+Rule 8     expresion -> exp OL_MEIGU exp
+Rule 9     expresion -> exp OL_MAIGU exp
+Rule 10    expresion -> exp OL_AND exp
+Rule 11    expresion -> exp OL_OR exp
+Rule 12    expresion -> exp
+Rule 13    exp -> exp OA_SUMA termino
+Rule 14    exp -> exp OA_RESTA termino
+Rule 15    exp -> termino
+Rule 16    termino -> termino OA_MULTI factor
+Rule 17    termino -> termino OA_DIVI factor
+Rule 18    termino -> factor
+Rule 19    factor -> cte
+Rule 20    factor -> IDENTIFICADOR
+Rule 21    factor -> DEL_PARABI expresion DEL_PARCER
+Rule 22    cte -> CA_NUMBER
+Rule 23    cte -> CA_FLOAT
+
+Terminals, with rules where they appear
+
+CA_FLOAT             : 23
+CA_NUMBER            : 22
+CA_STRING            : 
+DEL_BRAABI           : 
+DEL_BRACER           : 
+DEL_COMA             : 
+DEL_CORABI           : 
+DEL_CORCER           : 
+DEL_DOSPU            : 
+DEL_FLEDER           : 5
+DEL_FLEIZQ           : 4
+DEL_PARABI           : 21
+DEL_PARCER           : 21
+DEL_PUYCO            : 3
+IDENTIFICADOR        : 3 20
+NEWLINE              : 
+OA_DIVI              : 17
+OA_IGUAL             : 3
+OA_MULTI             : 16
+OA_RESTA             : 14
+OA_SUMA              : 13
+OL_AND               : 10
+OL_IGUIGU            : 7
+OL_MAIGU             : 9
+OL_MEIGU             : 8
+OL_NOIGU             : 6
+OL_OR                : 11
+PR_CONST             : 
+PR_DO                : 
+PR_ELSE              : 
+PR_END               : 
+PR_FALSE             : 
+PR_FOR               : 
+PR_IF                : 
+PR_INT               : 
+PR_MAIN              : 
+PR_PRINT             : 
+PR_PROGRAM           : 
+PR_STRING            : 
+PR_THEN              : 
+PR_TRUE              : 
+PR_VAR               : 
+PR_WHILE             : 
+error                : 
+
+Nonterminals, with rules where they appear
+
+asigna               : 2
+cte                  : 19
+exp                  : 4 4 5 5 6 6 7 7 8 8 9 9 10 10 11 11 12 13 14
+expresion            : 3 21
+factor               : 16 17 18
+statement            : 1 1 0
+termino              : 13 14 15 16 17
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . statement
+    (1) statement -> . statement statement
+    (2) statement -> . asigna
+    (3) asigna -> . IDENTIFICADOR OA_IGUAL expresion DEL_PUYCO
+
+    IDENTIFICADOR   shift and go to state 3
+
+    statement                      shift and go to state 1
+    asigna                         shift and go to state 2
+
+state 1
+
+    (0) S' -> statement .
+    (1) statement -> statement . statement
+    (1) statement -> . statement statement
+    (2) statement -> . asigna
+    (3) asigna -> . IDENTIFICADOR OA_IGUAL expresion DEL_PUYCO
+
+    IDENTIFICADOR   shift and go to state 3
+
+    statement                      shift and go to state 4
+    asigna                         shift and go to state 2
+
+state 2
+
+    (2) statement -> asigna .
+
+    IDENTIFICADOR   reduce using rule 2 (statement -> asigna .)
+    $end            reduce using rule 2 (statement -> asigna .)
+
+
+state 3
+
+    (3) asigna -> IDENTIFICADOR . OA_IGUAL expresion DEL_PUYCO
+
+    OA_IGUAL        shift and go to state 5
+
+
+state 4
+
+    (1) statement -> statement statement .
+    (1) statement -> statement . statement
+    (1) statement -> . statement statement
+    (2) statement -> . asigna
+    (3) asigna -> . IDENTIFICADOR OA_IGUAL expresion DEL_PUYCO
+
+  ! shift/reduce conflict for IDENTIFICADOR resolved as shift
+    $end            reduce using rule 1 (statement -> statement statement .)
+    IDENTIFICADOR   shift and go to state 3
+
+  ! IDENTIFICADOR   [ reduce using rule 1 (statement -> statement statement .) ]
+
+    statement                      shift and go to state 4
+    asigna                         shift and go to state 2
+
+state 5
+
+    (3) asigna -> IDENTIFICADOR OA_IGUAL . expresion DEL_PUYCO
+    (4) expresion -> . exp DEL_FLEIZQ exp
+    (5) expresion -> . exp DEL_FLEDER exp
+    (6) expresion -> . exp OL_NOIGU exp
+    (7) expresion -> . exp OL_IGUIGU exp
+    (8) expresion -> . exp OL_MEIGU exp
+    (9) expresion -> . exp OL_MAIGU exp
+    (10) expresion -> . exp OL_AND exp
+    (11) expresion -> . exp OL_OR exp
+    (12) expresion -> . exp
+    (13) exp -> . exp OA_SUMA termino
+    (14) exp -> . exp OA_RESTA termino
+    (15) exp -> . termino
+    (16) termino -> . termino OA_MULTI factor
+    (17) termino -> . termino OA_DIVI factor
+    (18) termino -> . factor
+    (19) factor -> . cte
+    (20) factor -> . IDENTIFICADOR
+    (21) factor -> . DEL_PARABI expresion DEL_PARCER
+    (22) cte -> . CA_NUMBER
+    (23) cte -> . CA_FLOAT
+
+    IDENTIFICADOR   shift and go to state 6
+    DEL_PARABI      shift and go to state 12
+    CA_NUMBER       shift and go to state 13
+    CA_FLOAT        shift and go to state 14
+
+    expresion                      shift and go to state 7
+    exp                            shift and go to state 8
+    termino                        shift and go to state 9
+    factor                         shift and go to state 10
+    cte                            shift and go to state 11
+
+state 6
+
+    (20) factor -> IDENTIFICADOR .
+
+    OA_MULTI        reduce using rule 20 (factor -> IDENTIFICADOR .)
+    OA_DIVI         reduce using rule 20 (factor -> IDENTIFICADOR .)
+    DEL_FLEIZQ      reduce using rule 20 (factor -> IDENTIFICADOR .)
+    DEL_FLEDER      reduce using rule 20 (factor -> IDENTIFICADOR .)
+    OL_NOIGU        reduce using rule 20 (factor -> IDENTIFICADOR .)
+    OL_IGUIGU       reduce using rule 20 (factor -> IDENTIFICADOR .)
+    OL_MEIGU        reduce using rule 20 (factor -> IDENTIFICADOR .)
+    OL_MAIGU        reduce using rule 20 (factor -> IDENTIFICADOR .)
+    OL_AND          reduce using rule 20 (factor -> IDENTIFICADOR .)
+    OL_OR           reduce using rule 20 (factor -> IDENTIFICADOR .)
+    OA_SUMA         reduce using rule 20 (factor -> IDENTIFICADOR .)
+    OA_RESTA        reduce using rule 20 (factor -> IDENTIFICADOR .)
+    DEL_PUYCO       reduce using rule 20 (factor -> IDENTIFICADOR .)
+    DEL_PARCER      reduce using rule 20 (factor -> IDENTIFICADOR .)
+
+
+state 7
+
+    (3) asigna -> IDENTIFICADOR OA_IGUAL expresion . DEL_PUYCO
+
+    DEL_PUYCO       shift and go to state 15
+
+
+state 8
+
+    (4) expresion -> exp . DEL_FLEIZQ exp
+    (5) expresion -> exp . DEL_FLEDER exp
+    (6) expresion -> exp . OL_NOIGU exp
+    (7) expresion -> exp . OL_IGUIGU exp
+    (8) expresion -> exp . OL_MEIGU exp
+    (9) expresion -> exp . OL_MAIGU exp
+    (10) expresion -> exp . OL_AND exp
+    (11) expresion -> exp . OL_OR exp
+    (12) expresion -> exp .
+    (13) exp -> exp . OA_SUMA termino
+    (14) exp -> exp . OA_RESTA termino
+
+    DEL_FLEIZQ      shift and go to state 16
+    DEL_FLEDER      shift and go to state 17
+    OL_NOIGU        shift and go to state 18
+    OL_IGUIGU       shift and go to state 19
+    OL_MEIGU        shift and go to state 20
+    OL_MAIGU        shift and go to state 21
+    OL_AND          shift and go to state 22
+    OL_OR           shift and go to state 23
+    DEL_PUYCO       reduce using rule 12 (expresion -> exp .)
+    DEL_PARCER      reduce using rule 12 (expresion -> exp .)
+    OA_SUMA         shift and go to state 24
+    OA_RESTA        shift and go to state 25
+
+
+state 9
+
+    (15) exp -> termino .
+    (16) termino -> termino . OA_MULTI factor
+    (17) termino -> termino . OA_DIVI factor
+
+    DEL_FLEIZQ      reduce using rule 15 (exp -> termino .)
+    DEL_FLEDER      reduce using rule 15 (exp -> termino .)
+    OL_NOIGU        reduce using rule 15 (exp -> termino .)
+    OL_IGUIGU       reduce using rule 15 (exp -> termino .)
+    OL_MEIGU        reduce using rule 15 (exp -> termino .)
+    OL_MAIGU        reduce using rule 15 (exp -> termino .)
+    OL_AND          reduce using rule 15 (exp -> termino .)
+    OL_OR           reduce using rule 15 (exp -> termino .)
+    OA_SUMA         reduce using rule 15 (exp -> termino .)
+    OA_RESTA        reduce using rule 15 (exp -> termino .)
+    DEL_PUYCO       reduce using rule 15 (exp -> termino .)
+    DEL_PARCER      reduce using rule 15 (exp -> termino .)
+    OA_MULTI        shift and go to state 26
+    OA_DIVI         shift and go to state 27
+
+
+state 10
+
+    (18) termino -> factor .
+
+    OA_MULTI        reduce using rule 18 (termino -> factor .)
+    OA_DIVI         reduce using rule 18 (termino -> factor .)
+    DEL_FLEIZQ      reduce using rule 18 (termino -> factor .)
+    DEL_FLEDER      reduce using rule 18 (termino -> factor .)
+    OL_NOIGU        reduce using rule 18 (termino -> factor .)
+    OL_IGUIGU       reduce using rule 18 (termino -> factor .)
+    OL_MEIGU        reduce using rule 18 (termino -> factor .)
+    OL_MAIGU        reduce using rule 18 (termino -> factor .)
+    OL_AND          reduce using rule 18 (termino -> factor .)
+    OL_OR           reduce using rule 18 (termino -> factor .)
+    OA_SUMA         reduce using rule 18 (termino -> factor .)
+    OA_RESTA        reduce using rule 18 (termino -> factor .)
+    DEL_PUYCO       reduce using rule 18 (termino -> factor .)
+    DEL_PARCER      reduce using rule 18 (termino -> factor .)
+
+
+state 11
+
+    (19) factor -> cte .
+
+    OA_MULTI        reduce using rule 19 (factor -> cte .)
+    OA_DIVI         reduce using rule 19 (factor -> cte .)
+    DEL_FLEIZQ      reduce using rule 19 (factor -> cte .)
+    DEL_FLEDER      reduce using rule 19 (factor -> cte .)
+    OL_NOIGU        reduce using rule 19 (factor -> cte .)
+    OL_IGUIGU       reduce using rule 19 (factor -> cte .)
+    OL_MEIGU        reduce using rule 19 (factor -> cte .)
+    OL_MAIGU        reduce using rule 19 (factor -> cte .)
+    OL_AND          reduce using rule 19 (factor -> cte .)
+    OL_OR           reduce using rule 19 (factor -> cte .)
+    OA_SUMA         reduce using rule 19 (factor -> cte .)
+    OA_RESTA        reduce using rule 19 (factor -> cte .)
+    DEL_PUYCO       reduce using rule 19 (factor -> cte .)
+    DEL_PARCER      reduce using rule 19 (factor -> cte .)
+
+
+state 12
+
+    (21) factor -> DEL_PARABI . expresion DEL_PARCER
+    (4) expresion -> . exp DEL_FLEIZQ exp
+    (5) expresion -> . exp DEL_FLEDER exp
+    (6) expresion -> . exp OL_NOIGU exp
+    (7) expresion -> . exp OL_IGUIGU exp
+    (8) expresion -> . exp OL_MEIGU exp
+    (9) expresion -> . exp OL_MAIGU exp
+    (10) expresion -> . exp OL_AND exp
+    (11) expresion -> . exp OL_OR exp
+    (12) expresion -> . exp
+    (13) exp -> . exp OA_SUMA termino
+    (14) exp -> . exp OA_RESTA termino
+    (15) exp -> . termino
+    (16) termino -> . termino OA_MULTI factor
+    (17) termino -> . termino OA_DIVI factor
+    (18) termino -> . factor
+    (19) factor -> . cte
+    (20) factor -> . IDENTIFICADOR
+    (21) factor -> . DEL_PARABI expresion DEL_PARCER
+    (22) cte -> . CA_NUMBER
+    (23) cte -> . CA_FLOAT
+
+    IDENTIFICADOR   shift and go to state 6
+    DEL_PARABI      shift and go to state 12
+    CA_NUMBER       shift and go to state 13
+    CA_FLOAT        shift and go to state 14
+
+    expresion                      shift and go to state 28
+    exp                            shift and go to state 8
+    termino                        shift and go to state 9
+    factor                         shift and go to state 10
+    cte                            shift and go to state 11
+
+state 13
+
+    (22) cte -> CA_NUMBER .
+
+    OA_MULTI        reduce using rule 22 (cte -> CA_NUMBER .)
+    OA_DIVI         reduce using rule 22 (cte -> CA_NUMBER .)
+    DEL_FLEIZQ      reduce using rule 22 (cte -> CA_NUMBER .)
+    DEL_FLEDER      reduce using rule 22 (cte -> CA_NUMBER .)
+    OL_NOIGU        reduce using rule 22 (cte -> CA_NUMBER .)
+    OL_IGUIGU       reduce using rule 22 (cte -> CA_NUMBER .)
+    OL_MEIGU        reduce using rule 22 (cte -> CA_NUMBER .)
+    OL_MAIGU        reduce using rule 22 (cte -> CA_NUMBER .)
+    OL_AND          reduce using rule 22 (cte -> CA_NUMBER .)
+    OL_OR           reduce using rule 22 (cte -> CA_NUMBER .)
+    OA_SUMA         reduce using rule 22 (cte -> CA_NUMBER .)
+    OA_RESTA        reduce using rule 22 (cte -> CA_NUMBER .)
+    DEL_PUYCO       reduce using rule 22 (cte -> CA_NUMBER .)
+    DEL_PARCER      reduce using rule 22 (cte -> CA_NUMBER .)
+
+
+state 14
+
+    (23) cte -> CA_FLOAT .
+
+    OA_MULTI        reduce using rule 23 (cte -> CA_FLOAT .)
+    OA_DIVI         reduce using rule 23 (cte -> CA_FLOAT .)
+    DEL_FLEIZQ      reduce using rule 23 (cte -> CA_FLOAT .)
+    DEL_FLEDER      reduce using rule 23 (cte -> CA_FLOAT .)
+    OL_NOIGU        reduce using rule 23 (cte -> CA_FLOAT .)
+    OL_IGUIGU       reduce using rule 23 (cte -> CA_FLOAT .)
+    OL_MEIGU        reduce using rule 23 (cte -> CA_FLOAT .)
+    OL_MAIGU        reduce using rule 23 (cte -> CA_FLOAT .)
+    OL_AND          reduce using rule 23 (cte -> CA_FLOAT .)
+    OL_OR           reduce using rule 23 (cte -> CA_FLOAT .)
+    OA_SUMA         reduce using rule 23 (cte -> CA_FLOAT .)
+    OA_RESTA        reduce using rule 23 (cte -> CA_FLOAT .)
+    DEL_PUYCO       reduce using rule 23 (cte -> CA_FLOAT .)
+    DEL_PARCER      reduce using rule 23 (cte -> CA_FLOAT .)
+
+
+state 15
+
+    (3) asigna -> IDENTIFICADOR OA_IGUAL expresion DEL_PUYCO .
+
+    IDENTIFICADOR   reduce using rule 3 (asigna -> IDENTIFICADOR OA_IGUAL expresion DEL_PUYCO .)
+    $end            reduce using rule 3 (asigna -> IDENTIFICADOR OA_IGUAL expresion DEL_PUYCO .)
+
+
+state 16
+
+    (4) expresion -> exp DEL_FLEIZQ . exp
+    (13) exp -> . exp OA_SUMA termino
+    (14) exp -> . exp OA_RESTA termino
+    (15) exp -> . termino
+    (16) termino -> . termino OA_MULTI factor
+    (17) termino -> . termino OA_DIVI factor
+    (18) termino -> . factor
+    (19) factor -> . cte
+    (20) factor -> . IDENTIFICADOR
+    (21) factor -> . DEL_PARABI expresion DEL_PARCER
+    (22) cte -> . CA_NUMBER
+    (23) cte -> . CA_FLOAT
+
+    IDENTIFICADOR   shift and go to state 6
+    DEL_PARABI      shift and go to state 12
+    CA_NUMBER       shift and go to state 13
+    CA_FLOAT        shift and go to state 14
+
+    exp                            shift and go to state 29
+    termino                        shift and go to state 9
+    factor                         shift and go to state 10
+    cte                            shift and go to state 11
+
+state 17
+
+    (5) expresion -> exp DEL_FLEDER . exp
+    (13) exp -> . exp OA_SUMA termino
+    (14) exp -> . exp OA_RESTA termino
+    (15) exp -> . termino
+    (16) termino -> . termino OA_MULTI factor
+    (17) termino -> . termino OA_DIVI factor
+    (18) termino -> . factor
+    (19) factor -> . cte
+    (20) factor -> . IDENTIFICADOR
+    (21) factor -> . DEL_PARABI expresion DEL_PARCER
+    (22) cte -> . CA_NUMBER
+    (23) cte -> . CA_FLOAT
+
+    IDENTIFICADOR   shift and go to state 6
+    DEL_PARABI      shift and go to state 12
+    CA_NUMBER       shift and go to state 13
+    CA_FLOAT        shift and go to state 14
+
+    exp                            shift and go to state 30
+    termino                        shift and go to state 9
+    factor                         shift and go to state 10
+    cte                            shift and go to state 11
+
+state 18
+
+    (6) expresion -> exp OL_NOIGU . exp
+    (13) exp -> . exp OA_SUMA termino
+    (14) exp -> . exp OA_RESTA termino
+    (15) exp -> . termino
+    (16) termino -> . termino OA_MULTI factor
+    (17) termino -> . termino OA_DIVI factor
+    (18) termino -> . factor
+    (19) factor -> . cte
+    (20) factor -> . IDENTIFICADOR
+    (21) factor -> . DEL_PARABI expresion DEL_PARCER
+    (22) cte -> . CA_NUMBER
+    (23) cte -> . CA_FLOAT
+
+    IDENTIFICADOR   shift and go to state 6
+    DEL_PARABI      shift and go to state 12
+    CA_NUMBER       shift and go to state 13
+    CA_FLOAT        shift and go to state 14
+
+    exp                            shift and go to state 31
+    termino                        shift and go to state 9
+    factor                         shift and go to state 10
+    cte                            shift and go to state 11
+
+state 19
+
+    (7) expresion -> exp OL_IGUIGU . exp
+    (13) exp -> . exp OA_SUMA termino
+    (14) exp -> . exp OA_RESTA termino
+    (15) exp -> . termino
+    (16) termino -> . termino OA_MULTI factor
+    (17) termino -> . termino OA_DIVI factor
+    (18) termino -> . factor
+    (19) factor -> . cte
+    (20) factor -> . IDENTIFICADOR
+    (21) factor -> . DEL_PARABI expresion DEL_PARCER
+    (22) cte -> . CA_NUMBER
+    (23) cte -> . CA_FLOAT
+
+    IDENTIFICADOR   shift and go to state 6
+    DEL_PARABI      shift and go to state 12
+    CA_NUMBER       shift and go to state 13
+    CA_FLOAT        shift and go to state 14
+
+    exp                            shift and go to state 32
+    termino                        shift and go to state 9
+    factor                         shift and go to state 10
+    cte                            shift and go to state 11
+
+state 20
+
+    (8) expresion -> exp OL_MEIGU . exp
+    (13) exp -> . exp OA_SUMA termino
+    (14) exp -> . exp OA_RESTA termino
+    (15) exp -> . termino
+    (16) termino -> . termino OA_MULTI factor
+    (17) termino -> . termino OA_DIVI factor
+    (18) termino -> . factor
+    (19) factor -> . cte
+    (20) factor -> . IDENTIFICADOR
+    (21) factor -> . DEL_PARABI expresion DEL_PARCER
+    (22) cte -> . CA_NUMBER
+    (23) cte -> . CA_FLOAT
+
+    IDENTIFICADOR   shift and go to state 6
+    DEL_PARABI      shift and go to state 12
+    CA_NUMBER       shift and go to state 13
+    CA_FLOAT        shift and go to state 14
+
+    exp                            shift and go to state 33
+    termino                        shift and go to state 9
+    factor                         shift and go to state 10
+    cte                            shift and go to state 11
+
+state 21
+
+    (9) expresion -> exp OL_MAIGU . exp
+    (13) exp -> . exp OA_SUMA termino
+    (14) exp -> . exp OA_RESTA termino
+    (15) exp -> . termino
+    (16) termino -> . termino OA_MULTI factor
+    (17) termino -> . termino OA_DIVI factor
+    (18) termino -> . factor
+    (19) factor -> . cte
+    (20) factor -> . IDENTIFICADOR
+    (21) factor -> . DEL_PARABI expresion DEL_PARCER
+    (22) cte -> . CA_NUMBER
+    (23) cte -> . CA_FLOAT
+
+    IDENTIFICADOR   shift and go to state 6
+    DEL_PARABI      shift and go to state 12
+    CA_NUMBER       shift and go to state 13
+    CA_FLOAT        shift and go to state 14
+
+    exp                            shift and go to state 34
+    termino                        shift and go to state 9
+    factor                         shift and go to state 10
+    cte                            shift and go to state 11
+
+state 22
+
+    (10) expresion -> exp OL_AND . exp
+    (13) exp -> . exp OA_SUMA termino
+    (14) exp -> . exp OA_RESTA termino
+    (15) exp -> . termino
+    (16) termino -> . termino OA_MULTI factor
+    (17) termino -> . termino OA_DIVI factor
+    (18) termino -> . factor
+    (19) factor -> . cte
+    (20) factor -> . IDENTIFICADOR
+    (21) factor -> . DEL_PARABI expresion DEL_PARCER
+    (22) cte -> . CA_NUMBER
+    (23) cte -> . CA_FLOAT
+
+    IDENTIFICADOR   shift and go to state 6
+    DEL_PARABI      shift and go to state 12
+    CA_NUMBER       shift and go to state 13
+    CA_FLOAT        shift and go to state 14
+
+    exp                            shift and go to state 35
+    termino                        shift and go to state 9
+    factor                         shift and go to state 10
+    cte                            shift and go to state 11
+
+state 23
+
+    (11) expresion -> exp OL_OR . exp
+    (13) exp -> . exp OA_SUMA termino
+    (14) exp -> . exp OA_RESTA termino
+    (15) exp -> . termino
+    (16) termino -> . termino OA_MULTI factor
+    (17) termino -> . termino OA_DIVI factor
+    (18) termino -> . factor
+    (19) factor -> . cte
+    (20) factor -> . IDENTIFICADOR
+    (21) factor -> . DEL_PARABI expresion DEL_PARCER
+    (22) cte -> . CA_NUMBER
+    (23) cte -> . CA_FLOAT
+
+    IDENTIFICADOR   shift and go to state 6
+    DEL_PARABI      shift and go to state 12
+    CA_NUMBER       shift and go to state 13
+    CA_FLOAT        shift and go to state 14
+
+    exp                            shift and go to state 36
+    termino                        shift and go to state 9
+    factor                         shift and go to state 10
+    cte                            shift and go to state 11
+
+state 24
+
+    (13) exp -> exp OA_SUMA . termino
+    (16) termino -> . termino OA_MULTI factor
+    (17) termino -> . termino OA_DIVI factor
+    (18) termino -> . factor
+    (19) factor -> . cte
+    (20) factor -> . IDENTIFICADOR
+    (21) factor -> . DEL_PARABI expresion DEL_PARCER
+    (22) cte -> . CA_NUMBER
+    (23) cte -> . CA_FLOAT
+
+    IDENTIFICADOR   shift and go to state 6
+    DEL_PARABI      shift and go to state 12
+    CA_NUMBER       shift and go to state 13
+    CA_FLOAT        shift and go to state 14
+
+    termino                        shift and go to state 37
+    factor                         shift and go to state 10
+    cte                            shift and go to state 11
+
+state 25
+
+    (14) exp -> exp OA_RESTA . termino
+    (16) termino -> . termino OA_MULTI factor
+    (17) termino -> . termino OA_DIVI factor
+    (18) termino -> . factor
+    (19) factor -> . cte
+    (20) factor -> . IDENTIFICADOR
+    (21) factor -> . DEL_PARABI expresion DEL_PARCER
+    (22) cte -> . CA_NUMBER
+    (23) cte -> . CA_FLOAT
+
+    IDENTIFICADOR   shift and go to state 6
+    DEL_PARABI      shift and go to state 12
+    CA_NUMBER       shift and go to state 13
+    CA_FLOAT        shift and go to state 14
+
+    termino                        shift and go to state 38
+    factor                         shift and go to state 10
+    cte                            shift and go to state 11
+
+state 26
+
+    (16) termino -> termino OA_MULTI . factor
+    (19) factor -> . cte
+    (20) factor -> . IDENTIFICADOR
+    (21) factor -> . DEL_PARABI expresion DEL_PARCER
+    (22) cte -> . CA_NUMBER
+    (23) cte -> . CA_FLOAT
+
+    IDENTIFICADOR   shift and go to state 6
+    DEL_PARABI      shift and go to state 12
+    CA_NUMBER       shift and go to state 13
+    CA_FLOAT        shift and go to state 14
+
+    factor                         shift and go to state 39
+    cte                            shift and go to state 11
+
+state 27
+
+    (17) termino -> termino OA_DIVI . factor
+    (19) factor -> . cte
+    (20) factor -> . IDENTIFICADOR
+    (21) factor -> . DEL_PARABI expresion DEL_PARCER
+    (22) cte -> . CA_NUMBER
+    (23) cte -> . CA_FLOAT
+
+    IDENTIFICADOR   shift and go to state 6
+    DEL_PARABI      shift and go to state 12
+    CA_NUMBER       shift and go to state 13
+    CA_FLOAT        shift and go to state 14
+
+    factor                         shift and go to state 40
+    cte                            shift and go to state 11
+
+state 28
+
+    (21) factor -> DEL_PARABI expresion . DEL_PARCER
+
+    DEL_PARCER      shift and go to state 41
+
+
+state 29
+
+    (4) expresion -> exp DEL_FLEIZQ exp .
+    (13) exp -> exp . OA_SUMA termino
+    (14) exp -> exp . OA_RESTA termino
+
+    DEL_PUYCO       reduce using rule 4 (expresion -> exp DEL_FLEIZQ exp .)
+    DEL_PARCER      reduce using rule 4 (expresion -> exp DEL_FLEIZQ exp .)
+    OA_SUMA         shift and go to state 24
+    OA_RESTA        shift and go to state 25
+
+
+state 30
+
+    (5) expresion -> exp DEL_FLEDER exp .
+    (13) exp -> exp . OA_SUMA termino
+    (14) exp -> exp . OA_RESTA termino
+
+    DEL_PUYCO       reduce using rule 5 (expresion -> exp DEL_FLEDER exp .)
+    DEL_PARCER      reduce using rule 5 (expresion -> exp DEL_FLEDER exp .)
+    OA_SUMA         shift and go to state 24
+    OA_RESTA        shift and go to state 25
+
+
+state 31
+
+    (6) expresion -> exp OL_NOIGU exp .
+    (13) exp -> exp . OA_SUMA termino
+    (14) exp -> exp . OA_RESTA termino
+
+    DEL_PUYCO       reduce using rule 6 (expresion -> exp OL_NOIGU exp .)
+    DEL_PARCER      reduce using rule 6 (expresion -> exp OL_NOIGU exp .)
+    OA_SUMA         shift and go to state 24
+    OA_RESTA        shift and go to state 25
+
+
+state 32
+
+    (7) expresion -> exp OL_IGUIGU exp .
+    (13) exp -> exp . OA_SUMA termino
+    (14) exp -> exp . OA_RESTA termino
+
+    DEL_PUYCO       reduce using rule 7 (expresion -> exp OL_IGUIGU exp .)
+    DEL_PARCER      reduce using rule 7 (expresion -> exp OL_IGUIGU exp .)
+    OA_SUMA         shift and go to state 24
+    OA_RESTA        shift and go to state 25
+
+
+state 33
+
+    (8) expresion -> exp OL_MEIGU exp .
+    (13) exp -> exp . OA_SUMA termino
+    (14) exp -> exp . OA_RESTA termino
+
+    DEL_PUYCO       reduce using rule 8 (expresion -> exp OL_MEIGU exp .)
+    DEL_PARCER      reduce using rule 8 (expresion -> exp OL_MEIGU exp .)
+    OA_SUMA         shift and go to state 24
+    OA_RESTA        shift and go to state 25
+
+
+state 34
+
+    (9) expresion -> exp OL_MAIGU exp .
+    (13) exp -> exp . OA_SUMA termino
+    (14) exp -> exp . OA_RESTA termino
+
+    DEL_PUYCO       reduce using rule 9 (expresion -> exp OL_MAIGU exp .)
+    DEL_PARCER      reduce using rule 9 (expresion -> exp OL_MAIGU exp .)
+    OA_SUMA         shift and go to state 24
+    OA_RESTA        shift and go to state 25
+
+
+state 35
+
+    (10) expresion -> exp OL_AND exp .
+    (13) exp -> exp . OA_SUMA termino
+    (14) exp -> exp . OA_RESTA termino
+
+    DEL_PUYCO       reduce using rule 10 (expresion -> exp OL_AND exp .)
+    DEL_PARCER      reduce using rule 10 (expresion -> exp OL_AND exp .)
+    OA_SUMA         shift and go to state 24
+    OA_RESTA        shift and go to state 25
+
+
+state 36
+
+    (11) expresion -> exp OL_OR exp .
+    (13) exp -> exp . OA_SUMA termino
+    (14) exp -> exp . OA_RESTA termino
+
+    DEL_PUYCO       reduce using rule 11 (expresion -> exp OL_OR exp .)
+    DEL_PARCER      reduce using rule 11 (expresion -> exp OL_OR exp .)
+    OA_SUMA         shift and go to state 24
+    OA_RESTA        shift and go to state 25
+
+
+state 37
+
+    (13) exp -> exp OA_SUMA termino .
+    (16) termino -> termino . OA_MULTI factor
+    (17) termino -> termino . OA_DIVI factor
+
+    DEL_FLEIZQ      reduce using rule 13 (exp -> exp OA_SUMA termino .)
+    DEL_FLEDER      reduce using rule 13 (exp -> exp OA_SUMA termino .)
+    OL_NOIGU        reduce using rule 13 (exp -> exp OA_SUMA termino .)
+    OL_IGUIGU       reduce using rule 13 (exp -> exp OA_SUMA termino .)
+    OL_MEIGU        reduce using rule 13 (exp -> exp OA_SUMA termino .)
+    OL_MAIGU        reduce using rule 13 (exp -> exp OA_SUMA termino .)
+    OL_AND          reduce using rule 13 (exp -> exp OA_SUMA termino .)
+    OL_OR           reduce using rule 13 (exp -> exp OA_SUMA termino .)
+    OA_SUMA         reduce using rule 13 (exp -> exp OA_SUMA termino .)
+    OA_RESTA        reduce using rule 13 (exp -> exp OA_SUMA termino .)
+    DEL_PUYCO       reduce using rule 13 (exp -> exp OA_SUMA termino .)
+    DEL_PARCER      reduce using rule 13 (exp -> exp OA_SUMA termino .)
+    OA_MULTI        shift and go to state 26
+    OA_DIVI         shift and go to state 27
+
+
+state 38
+
+    (14) exp -> exp OA_RESTA termino .
+    (16) termino -> termino . OA_MULTI factor
+    (17) termino -> termino . OA_DIVI factor
+
+    DEL_FLEIZQ      reduce using rule 14 (exp -> exp OA_RESTA termino .)
+    DEL_FLEDER      reduce using rule 14 (exp -> exp OA_RESTA termino .)
+    OL_NOIGU        reduce using rule 14 (exp -> exp OA_RESTA termino .)
+    OL_IGUIGU       reduce using rule 14 (exp -> exp OA_RESTA termino .)
+    OL_MEIGU        reduce using rule 14 (exp -> exp OA_RESTA termino .)
+    OL_MAIGU        reduce using rule 14 (exp -> exp OA_RESTA termino .)
+    OL_AND          reduce using rule 14 (exp -> exp OA_RESTA termino .)
+    OL_OR           reduce using rule 14 (exp -> exp OA_RESTA termino .)
+    OA_SUMA         reduce using rule 14 (exp -> exp OA_RESTA termino .)
+    OA_RESTA        reduce using rule 14 (exp -> exp OA_RESTA termino .)
+    DEL_PUYCO       reduce using rule 14 (exp -> exp OA_RESTA termino .)
+    DEL_PARCER      reduce using rule 14 (exp -> exp OA_RESTA termino .)
+    OA_MULTI        shift and go to state 26
+    OA_DIVI         shift and go to state 27
+
+
+state 39
+
+    (16) termino -> termino OA_MULTI factor .
+
+    OA_MULTI        reduce using rule 16 (termino -> termino OA_MULTI factor .)
+    OA_DIVI         reduce using rule 16 (termino -> termino OA_MULTI factor .)
+    DEL_FLEIZQ      reduce using rule 16 (termino -> termino OA_MULTI factor .)
+    DEL_FLEDER      reduce using rule 16 (termino -> termino OA_MULTI factor .)
+    OL_NOIGU        reduce using rule 16 (termino -> termino OA_MULTI factor .)
+    OL_IGUIGU       reduce using rule 16 (termino -> termino OA_MULTI factor .)
+    OL_MEIGU        reduce using rule 16 (termino -> termino OA_MULTI factor .)
+    OL_MAIGU        reduce using rule 16 (termino -> termino OA_MULTI factor .)
+    OL_AND          reduce using rule 16 (termino -> termino OA_MULTI factor .)
+    OL_OR           reduce using rule 16 (termino -> termino OA_MULTI factor .)
+    OA_SUMA         reduce using rule 16 (termino -> termino OA_MULTI factor .)
+    OA_RESTA        reduce using rule 16 (termino -> termino OA_MULTI factor .)
+    DEL_PUYCO       reduce using rule 16 (termino -> termino OA_MULTI factor .)
+    DEL_PARCER      reduce using rule 16 (termino -> termino OA_MULTI factor .)
+
+
+state 40
+
+    (17) termino -> termino OA_DIVI factor .
+
+    OA_MULTI        reduce using rule 17 (termino -> termino OA_DIVI factor .)
+    OA_DIVI         reduce using rule 17 (termino -> termino OA_DIVI factor .)
+    DEL_FLEIZQ      reduce using rule 17 (termino -> termino OA_DIVI factor .)
+    DEL_FLEDER      reduce using rule 17 (termino -> termino OA_DIVI factor .)
+    OL_NOIGU        reduce using rule 17 (termino -> termino OA_DIVI factor .)
+    OL_IGUIGU       reduce using rule 17 (termino -> termino OA_DIVI factor .)
+    OL_MEIGU        reduce using rule 17 (termino -> termino OA_DIVI factor .)
+    OL_MAIGU        reduce using rule 17 (termino -> termino OA_DIVI factor .)
+    OL_AND          reduce using rule 17 (termino -> termino OA_DIVI factor .)
+    OL_OR           reduce using rule 17 (termino -> termino OA_DIVI factor .)
+    OA_SUMA         reduce using rule 17 (termino -> termino OA_DIVI factor .)
+    OA_RESTA        reduce using rule 17 (termino -> termino OA_DIVI factor .)
+    DEL_PUYCO       reduce using rule 17 (termino -> termino OA_DIVI factor .)
+    DEL_PARCER      reduce using rule 17 (termino -> termino OA_DIVI factor .)
+
+
+state 41
+
+    (21) factor -> DEL_PARABI expresion DEL_PARCER .
+
+    OA_MULTI        reduce using rule 21 (factor -> DEL_PARABI expresion DEL_PARCER .)
+    OA_DIVI         reduce using rule 21 (factor -> DEL_PARABI expresion DEL_PARCER .)
+    DEL_FLEIZQ      reduce using rule 21 (factor -> DEL_PARABI expresion DEL_PARCER .)
+    DEL_FLEDER      reduce using rule 21 (factor -> DEL_PARABI expresion DEL_PARCER .)
+    OL_NOIGU        reduce using rule 21 (factor -> DEL_PARABI expresion DEL_PARCER .)
+    OL_IGUIGU       reduce using rule 21 (factor -> DEL_PARABI expresion DEL_PARCER .)
+    OL_MEIGU        reduce using rule 21 (factor -> DEL_PARABI expresion DEL_PARCER .)
+    OL_MAIGU        reduce using rule 21 (factor -> DEL_PARABI expresion DEL_PARCER .)
+    OL_AND          reduce using rule 21 (factor -> DEL_PARABI expresion DEL_PARCER .)
+    OL_OR           reduce using rule 21 (factor -> DEL_PARABI expresion DEL_PARCER .)
+    OA_SUMA         reduce using rule 21 (factor -> DEL_PARABI expresion DEL_PARCER .)
+    OA_RESTA        reduce using rule 21 (factor -> DEL_PARABI expresion DEL_PARCER .)
+    DEL_PUYCO       reduce using rule 21 (factor -> DEL_PARABI expresion DEL_PARCER .)
+    DEL_PARCER      reduce using rule 21 (factor -> DEL_PARABI expresion DEL_PARCER .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for IDENTIFICADOR in state 4 resolved as shift
