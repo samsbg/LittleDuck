@@ -1,4 +1,5 @@
 import re
+import time
 
 BOLD = "\033[1m"
 RED = "\033[31m"
@@ -7,7 +8,6 @@ RESET = "\033[0m"
 
 reserved = {
     'if': 'PR_IF',
-    'then': 'PR_THEN',
     'else': 'PR_ELSE',
     'while': 'PR_WHILE',
     'for': 'PR_FOR',
@@ -21,7 +21,9 @@ reserved = {
     'program': 'PR_PROGRAM',
     'main': 'PR_MAIN',
     'end': 'PR_END',
-    'string': 'PR_STRING'
+    'string': 'PR_STRING',
+    'void': 'PR_VOID',
+    'float': 'PR_FLOAT',
 }
 
 alfanumericos = ['CA_NUMBER', 'CA_FLOAT', 'CA_STRING']
@@ -82,7 +84,7 @@ class Token:
             print(f"{BOLD}Símbolo o palabra no reconocido: {RESET}{self.content[0]} at lexpos: {self.lexpos}")
             return
 
-        if (self.token == 'EOL'):
+        if (self.token == 'EOD'):
             return
 
         type = f"{self.token:<{18}}"
@@ -135,7 +137,8 @@ class Tokens:
         return self.tokens[self.pos+1]
 
     def avanza(self):
-        self.pos += 1
+        if (self.current().token != 'EOD'):
+            self.pos += 1
         return self.tokens[self.pos]
 
     def print_tokens(self):
@@ -156,9 +159,9 @@ class Tokens:
 
     def program_valid(self):
         if (len(self.lista_errores) == 0):
-            print(f"{GREEN}OKS - Programa válido{RESET}\n\n")
+            print(f"{GREEN}\nOKS - Programa válido{RESET}\n\n")
         else:
-            print(f"{RED}NOPE - Programa no válido{RESET}\n\n")
+            print(f"{RED}\nNOPE - Programa no válido{RESET}\n\n")
 
     def print_errors(self):
         if (len(self.lista_errores) != 0):
@@ -171,3 +174,20 @@ class Tokens:
         for element, value in self.tabla_simbolos.items():
             print(f"{element:<{20}}{value}")
 
+class Estructura_Impresion:
+    def __init__(self):
+        self.stack = []
+
+    def empezar_estructura(self, name):
+        indent = '|    ' * len(self.stack)
+        print(f"{indent}{name}")
+        self.stack.append(name)
+
+    def termina_estructura(self):
+        self.stack.pop()
+        indent = '|    ' * len(self.stack)
+        print(f"{indent}>")
+
+    def marcar_error(self):
+        indent = '|    ' * len(self.stack)
+        print(f"{indent}ERROR!")

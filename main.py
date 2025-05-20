@@ -1,28 +1,37 @@
 import ply.lex as lex
 
 from CustomLexer import CustomLexer
-from CustomParser2 import CustomParser2
+from CustomParser import CustomParser
+
+from TokenDef import Tokens
 
 
 # Custom compiler
 
 customLexer = CustomLexer()
+customParser = CustomParser()
+
+tokensDoc = Tokens(0, '')
 
 print('\n3.3 - Tokeniza con Ply')
 
 print('\n-----------------------------------------\n')
 
 # Abre el archivo y procesa el programa por el lexer
-with open("Samples/sample_asignaciones.ld", "r") as file:
+with open("Samples/sample5.ld", "r") as file:
+
+    lineCount = 1
+
     for index, line in enumerate(file):
 
-        dataTemp = line
+        lineTokens = customLexer.analisis(line)
+        tokensDoc.add_tokens(lineTokens)
 
-        lineTokens = customLexer.analisis(dataTemp)
+        lineCount += 1
 
-        lineTokens.add_token('EOL', 'EOL', len(dataTemp), 0)
+    tokensDoc.add_token('EOD', 'EOD', 0, lineCount)
 
-        CustomParser2(lineTokens, 'ASSIGN')
+    customParser.analisis(tokensDoc)
 
-        lineTokens.print_linea()
-        lineTokens.print_errors()
+    tokensDoc.program_valid()
+    tokensDoc.print_errors()
