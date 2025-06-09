@@ -1,5 +1,4 @@
 import re
-import time
 
 BOLD = "\033[1m"
 RED = "\033[31m"
@@ -93,7 +92,6 @@ class Token:
 
         print(type + value + lexpos)
             
-
 # Una clase tokens basica...
 class Tokens:
   # Atributos
@@ -159,9 +157,11 @@ class Tokens:
 
     def program_valid(self):
         if (len(self.lista_errores) == 0):
-            print(f"{GREEN}\nOKS - Programa válido{RESET}\n\n")
-        else:
-            print(f"{RED}\nNOPE - Programa no válido{RESET}\n\n")
+            print(f"{GREEN}\nSINTAXIS OKS - Programa válido{RESET}\n\n")
+            return True
+
+        print(f"{RED}\nSINTAXIS NOPE - Programa no válido{RESET}\n\n")
+        return False
 
     def print_errors(self):
         if (len(self.lista_errores) != 0):

@@ -1,0 +1,130 @@
+1	17000
+1	17001
+0	17002
+1	17003
+2	17004
+0	17005
+1	17006
+1	17007
+5	17008
+5	17009
+8	17010
+F(	19000
+) = 	19001
+/n	19002
+Serie Fibonacci completada	19003
+/n	19004
+F(0) = 0	19005
+/n	19006
+F(1) = 1	19007
+/n	19008
+Error: l debe ser mayor que 0	19009
+/n	19010
+=== SERIE DE FIBONACCI ===	19011
+/n	19012
+Calculando Fibonacci hasta F(	19013
+):	19014
+/n	19015
+	19016
+/n	19017
+Calculando Fibonacci hasta F(	19018
+):	19019
+/n	19020
+	19021
+/n	19022
+=== FIN DEL PROGRAMA ===	19023
+/n	19024
+
+global_int	2
+global_float	0
+global_str	0
+global_void	2
+local_int	6
+local_float	0
+local_str	0
+temp_int	3
+temp_float	0
+temp_bool	4
+cte_int	11
+cte_float	0
+cte_str	25
+
+4000
+params	4
+local_int	5
+local_float	0
+local_string	0
+end
+4001
+params	1
+local_int	1
+local_float	0
+local_string	0
+end
+
+1	gotomain	-1             	-1             	43
+2	>	7003           	17000          	14000
+3	gotoF	14000          	-1             	19
+4	+	7001           	7002           	12000
+5	=	12000          	-1             	7004
+6	print	19000          	-1             	-1
+7	print	7003           	-1             	-1
+8	print	19001          	-1             	-1
+9	print	7004           	-1             	-1
+10	print	19002          	-1             	-1
+11	sub	4000           	-1             	-1
+12	-	7003           	17001          	12001
+13	param	7000           	-1             	0
+14	param	7002           	-1             	1
+15	param	7004           	-1             	2
+16	param	12001          	-1             	3
+17	gosub	4000           	-1             	2
+18	goto	-1             	-1             	21
+19	print	19003          	-1             	-1
+20	print	19004          	-1             	-1
+21	endfun	-1             	-1             	-1
+22	>	7005           	17002          	14001
+23	gotoF	14001          	-1             	40
+24	print	19005          	-1             	-1
+25	print	19006          	-1             	-1
+26	>	7005           	17003          	14002
+27	gotoF	14002          	-1             	39
+28	print	19007          	-1             	-1
+29	print	19008          	-1             	-1
+30	>	7005           	17004          	14003
+31	gotoF	14003          	-1             	39
+32	sub	4000           	-1             	-1
+33	-	7005           	17007          	12002
+34	param	7005           	-1             	0
+35	param	17005          	-1             	1
+36	param	17006          	-1             	2
+37	param	12002          	-1             	3
+38	gosub	4000           	-1             	2
+39	goto	-1             	-1             	42
+40	print	19009          	-1             	-1
+41	print	19010          	-1             	-1
+42	endfun	-1             	-1             	-1
+43	print	19011          	-1             	-1
+44	print	19012          	-1             	-1
+45	=	17008          	-1             	1000
+46	print	19013          	-1             	-1
+47	print	1000           	-1             	-1
+48	print	19014          	-1             	-1
+49	print	19015          	-1             	-1
+50	sub	4001           	-1             	-1
+51	param	17009          	-1             	0
+52	gosub	4001           	-1             	22
+53	print	19016          	-1             	-1
+54	print	19017          	-1             	-1
+55	=	17010          	-1             	1000
+56	print	19018          	-1             	-1
+57	print	1000           	-1             	-1
+58	print	19019          	-1             	-1
+59	print	19020          	-1             	-1
+60	sub	4001           	-1             	-1
+61	param	1000           	-1             	0
+62	gosub	4001           	-1             	22
+63	print	19021          	-1             	-1
+64	print	19022          	-1             	-1
+65	print	19023          	-1             	-1
+66	print	19024          	-1             	-1

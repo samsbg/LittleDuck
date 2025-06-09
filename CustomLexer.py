@@ -49,14 +49,14 @@ class CustomLexer:
             self.tabla_simbolos[t.value].append([t.lineno, t.lexpos])
         return t
 
+    def t_CA_FLOAT(self, t):
+        r'[+-]?(\d+\.\d*|\.\d+)([eE][+-]?\d+)?'
+        t.value = float(t.value)
+        return t
+    
     def t_CA_NUMBER(self, t):
         r'\d+'
         t.value = int(t.value)
-        return t
-
-    def t_CA_FLOAT(self, t):
-        r'[+-]?(\d+(\.\d*)?|\.\d+)([eE][+-]?\d+)?'
-        t.value = float(t.value)
         return t
 
     def t_CA_STRING(self, t):

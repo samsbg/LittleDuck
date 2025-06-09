@@ -2,9 +2,9 @@ import ply.lex as lex
 
 from CustomLexer import CustomLexer
 from CustomParser import CustomParser
+from CustomVM import VM
 
 from TokenDef import Tokens
-
 
 # Custom compiler
 
@@ -13,12 +13,12 @@ customParser = CustomParser()
 
 tokensDoc = Tokens(0, '')
 
-print('\n3.3 - Tokeniza con Ply')
+print('\nEntrega 4')
 
 print('\n-----------------------------------------\n')
 
 # Abre el archivo y procesa el programa por el lexer
-with open("Samples/sample5.ld", "r") as file:
+with open("Samples/sample13.ld", "r") as file:
 
     lineCount = 1
 
@@ -35,3 +35,9 @@ with open("Samples/sample5.ld", "r") as file:
 
     tokensDoc.program_valid()
     tokensDoc.print_errors()
+
+    if (customParser.listaCuadruples.programaValido()):
+        customParser.listaCuadruples.imprimir_archivo()
+
+        customVM = VM()
+        customVM.analisis()
